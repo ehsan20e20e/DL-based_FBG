@@ -1,0 +1,72 @@
+#The code for the research presented in the paper titled "Enabling inverse design of chirped apodized fiber Bragg grating with deep learning."
+#This script file is used to generate spectra using the FDTD method automatically
+#Please cite the paper in any publication using this code.
+switchtolayout;
+L_grating=10*1e-6; #grating length
+P_grating=0.1*1e-6;  #grating period 
+delta_ac=0.01;     #average refractive index variations of the fiber core 
+delta_dc=0.01;     #maximum index variations ranging 
+alpha=1;     #chirp periods
+###
+L_grating1=zeros(300,1);
+P_grating1=zeros(300,1);
+delta_ac1=zeros(300,1);
+delta_dc1=zeros(300,1);
+alpha1=zeros(300,1);
+###
+setnamed('::model','L_grating',L_grating);
+setnamed('::model','P_grating',P_grating);
+setnamed('::model','delta_ac',delta_ac);
+setnamed('::model','delta_dc',delta_dc);
+setnamed('::model','alpha',alpha);
+###
+for (i=1) {
+  L_grating=10*1e-6+i*1e-6;
+  setnamed('::model','L_grating',L_grating);
+    for (j=0:2:10) {
+      P_grating=0.1*1e-6+j*1e-6;      
+      setnamed('::model','P_grating',P_grating);  
+        for (k=0:2:10) {
+          delta_ac=0.01+k*0.1;
+          setnamed('::model','delta_ac',delta_ac);
+            for (p=0:2:10) {
+                delta_dc=0.01+p*0.1;
+              setnamed('::model','delta_dc',delta_dc);
+                for (n=0:2:10) {
+                  alpha=0.01+p*0.1;
+                  setnamed('::model','alpha',alpha);
+                  
+                  run;
+      
+        mname1="monitor_through";        # monitor1 name
+        mname2="monitor_drop";      # monitor2 name
+        T1=transmission(mname1);     # Power transmission through monitor1
+        T2=transmission(mname2);     # Power transmission through monitor2
+        filename1="T1";
+        filename2="T2";
+        savedata(filename1,T1);
+        savedata(filename2,T2);
+        loaddata(filename1);
+        loaddata(filename2);
+        write("C:\Adibnia simulation\0ee_T1.txt",num2str(T1));
+        write("C:\Adibnia simulation\0ee_T2.txt",num2str(T2));
+        
+                
+        L_grating1(:,1)=L_grating;
+        P_grating1(:,1)=P_grating;
+        delta_ac1(:,1)=delta_ac;
+        delta_dc1(:,1)=delta_dc;
+        alpha1(:,1)=alpha;
+
+        
+        for (u=1:1:300) {
+          str= num2str((u+1000))+", "+num2str(L_grating1(u))+", "+num2str(P_grating1(u))+", "+num2str(delta_ac1(u))+", "+num2str(delta_dc1(u))+", "+num2str(alpha1(u))+", "+num2str(T1(u))+", "+num2str(T2(u));
+          write("C:\Adibnia simulation\0ee_T4.txt",str);}
+        switchtolayout;
+} 
+} 
+} 
+}
+}
+
+                  
