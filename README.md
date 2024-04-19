@@ -4,7 +4,7 @@ Animation Abstract (loading ... please wait):
 ![DL-based_FBG](https://github.com/ehsan20e20e/DL-based_FBG/assets/106914575/6cab5469-7042-4331-be46-d561b3d2b96b)
 
 ## Describtion
-The provided repository serves as a demonstration of the application of deep learning techniques in the prediction of the spectral response of all-optical plasmonic switches. This repository is based on the extensive research presented in the paper titled "Enabling_inverse_design_of_chirped_apodized_fiber_Bragg_grating_with_deep_learning." It has been designed to address inverse design challenges, with a specific focus on the fields of photonics and optics.
+The provided repository serves as a demonstration of the application of deep learning techniques in the prediction of the spectral response of all-optical plasmonic switches. This repository is based on the extensive research presented in the paper titled "Deep_learning-enabled_inverse_design_of chirped_apodized_fiber_Bragg_gratings." It has been designed to address inverse design challenges, with a specific focus on the fields of photonics and optics.
 #### Instructions
 The following guidelines provide detailed instructions for setting up and running a copy of the project on your local machine, thus enabling you to perform testing and development activities. These instructions are tailored to ensure accuracy and completeness when executing the project setup process. Consequently, we recommend that you adhere to them meticulously.
 ## Prerequisites
